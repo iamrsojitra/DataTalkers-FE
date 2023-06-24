@@ -2,14 +2,6 @@
   [class]="themeMode === light? 'border-dark' : ''">
   <div class="container-fluid">
     <a class="navbar-brand header-font" [routerLink]="['/']">
-      <ng-container *ngIf="themeMode === light">
-        <img src="/assets/Images/small-logo.svg" alt="Logo" width="35" height="35"
-          class="d-inline-block align-text-top">
-      </ng-container>
-      <ng-container *ngIf="themeMode === 'dark'">
-        <img src="/assets/Images/small-logo.svg" alt="Logo" width="35" height="35"
-          class="d-inline-block align-text-top">
-      </ng-container>
       Data Talkers
     </a>
     <div class="d-flex align-items-center">

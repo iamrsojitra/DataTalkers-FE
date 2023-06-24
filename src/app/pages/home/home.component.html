@@ -1,7 +1,8 @@
 <div class="" [attr.data-bs-theme]="themeMode">
+
   <div class="card chat-container border-0" *ngFor="let qa of qaList">
     <!-- Question asked by the user -->
-    <div>
+    <div class="bg-body-secondary">
       <div class="container-fluid d-flex my-2" *ngIf="qa.question">
         <i class="fa fa-user me-3 fs-4" [class]="themeMode === light ? ' text-dark' : 'text-light'"></i>
         <p class="card-text">{{qa.question}}</p>
@@ -10,20 +11,39 @@
     </div>
 
     <!-- Answer given by the open AI-->
+    <div class="container-fluid d-flex my-2" *ngIf="qa.question">
+      <i class="fa fa-database me-3 fs-4" [class]="themeMode === light ? ' text-dark' : 'text-light'"></i>
+      <p class="card-text mb-0" [innerHTML]="qa?.answer | nl2br"></p>
+      <p class="card-text text-danger mb-0" [innerHTML]="qa?.error | nl2br"></p>
+      <div class="spinner d-flex align-items-center justify-content-center"
+        *ngIf="apiLoading && !qa.answer && !qa.error">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+    </div>
     <div class="bg-body-secondary">
-      <div class="container-fluid d-flex my-2" *ngIf="qa.question">
-        <i class="fa fa-database me-3 fs-4" [class]="themeMode === light ? ' text-dark' : 'text-light'"></i>
-        <p class="card-text mb-0" [innerHTML]="qa?.answer | nl2br"></p>
-        <p class="card-text text-danger mb-0" [innerHTML]="qa?.error | nl2br"></p>
-        <div class="spinner d-flex align-items-center justify-content-center"
-          *ngIf="apiLoading && !qa.answer && !qa.error">
-          <div class="bounce1"></div>
-          <div class="bounce2"></div>
-          <div class="bounce3"></div>
+    </div>
+  </div>
+
+  <!-- welcome text -->
+  <ng-container *ngIf="!this.qaList.length">
+    <div class="card chat-container border-0">
+      <div class="container-fluid my-2 text-center">
+        <div class="welcome">
+          Welcome to
+        </div>
+        <div class="data-talker">
+          Data Talkers
+        </div>
+        <div class="help">
+          How Can I help you ?
         </div>
       </div>
     </div>
-  </div>
+  </ng-container>
+
+  <!-- Input search -->
   <div class="position-fixed input-custom w-100 py-2 pt-5"
     [class]="themeMode === light ? 'input-light-bg' : 'input-dark-bg'">
     <div class="container-fluid">
