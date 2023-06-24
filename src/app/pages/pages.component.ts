@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from '../core/layout/footer/footer.component';
 import { HeaderComponent } from '../core/layout/header/header.component';
@@ -13,5 +13,4 @@ import { SidebarComponent } from '../core/layout/sidebar/sidebar.component';
   styleUrls: ['./pages.component.scss']
 })
 export class PagesComponent {
-
 }

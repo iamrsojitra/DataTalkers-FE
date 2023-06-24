@@ -11,18 +11,22 @@ export const appRoutes: Routes = [
   {
     path: '',
     loadComponent: () => import('../../pages/pages.component').then((m) => m.PagesComponent),
-    canMatch: [AuthGuard],
-    // children: [
-    //   {
-    //     path: '',
-    //     redirectTo: '/auth',
-    //     pathMatch: 'full'
-    //   },
-    //   {
-    //     path: 'admin',
-    //     loadChildren: () => import('@constants/admin.routes').then((m) => m.adminRoutes),
-    //   }
-    // ]
+    // canMatch: [AuthGuard],
+    children: [
+      {
+        path: '',
+        redirectTo: '/home',
+        pathMatch: 'full'
+      },
+      {
+        path: 'home',
+        loadComponent: () => import('../../pages/home/home.component').then((m) => m.HomeComponent),
+      },
+      {
+        path: '**',
+        redirectTo: '/home'
+      },
+    ]
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
