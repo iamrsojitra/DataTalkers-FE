@@ -4,13 +4,13 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideRouter } from "@angular/router";
 import { appRoutes } from '@constants/app.routes';
-
-
+import { ErrorInterceptor } from '@interceptors/error.interceptor';
+import { HttpTokenInterceptor } from '@interceptors/http.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(appRoutes),
-    provideHttpClient(withInterceptors([])),
+    provideHttpClient(withInterceptors([HttpTokenInterceptor, ErrorInterceptor])),
     importProvidersFrom(
       BrowserModule,
       BrowserAnimationsModule,

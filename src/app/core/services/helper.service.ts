@@ -1,5 +1,4 @@
-import { Inject, Injectable, InjectionToken, PLATFORM_ID } from '@angular/core';
-import { CryptoService } from './crypto.service';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({

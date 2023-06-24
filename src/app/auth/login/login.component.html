@@ -39,7 +39,7 @@
             [ngClass]="{ 'is-invalid': (loginForm.submitted || dbHostUrl.touched) && dbHostUrl.invalid }" type="text"
             id="dbHostUrl" ngModel name="dbHostUrl" #dbHostUrl="ngModel" required placeholder="Enter your DB Host URL">
           <label for="dbHostUrl">DBHostUrl</label>
-          <div class="form-text ms-2" id="basic-addon4">Example help text goes outside the input group.</div>
+          <div class="form-text ms-2" id="basic-addon4">Ex. localhost:127.0.0.1:3000</div>
           <ng-container *ngIf="(loginForm.submitted || dbHostUrl.touched)">
             <ng-container *ngIf="dbHostUrl.errors?.['required']">
               <div class="invalid-feedback">DbHostUrl is required</div>
