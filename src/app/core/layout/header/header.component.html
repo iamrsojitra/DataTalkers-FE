@@ -1,41 +1,27 @@
-<nav
-  class="navbar bg-body-tertiary border-bottom border-light border-dark fixed-top"
-    [attr.data-bs-theme]="themeMode"
-    [class]="themeMode === light? 'border-dark' : ''"
-  >
+<nav class="navbar bg-body-tertiary border-bottom border-light border-dark fixed-top" [attr.data-bs-theme]="themeMode"
+  [class]="themeMode === light? 'border-dark' : ''">
   <div class="container-fluid">
     <a class="navbar-brand header-font" [routerLink]="['/']">
       <ng-container *ngIf="themeMode === light">
-        <img src="/assets/Images/small-logo.svg" alt="Logo" width="35" height="35" class="d-inline-block align-text-top">
+        <img src="/assets/Images/small-logo.svg" alt="Logo" width="35" height="35"
+          class="d-inline-block align-text-top">
       </ng-container>
       <ng-container *ngIf="themeMode === 'dark'">
-        <img src="/assets/Images/small-logo.svg" alt="Logo" width="35" height="35" class="d-inline-block align-text-top">
+        <img src="/assets/Images/small-logo.svg" alt="Logo" width="35" height="35"
+          class="d-inline-block align-text-top">
       </ng-container>
       Data Talkers
     </a>
     <div class="d-flex align-items-center">
-      <i
-        class="fa fs-4 pe-2"
-        [class]="themeMode === light ? 'fa-sun text-dark' : 'fa-moon text-light'"
-      ></i>
-      <div
-        class="form-switch pe-2 border-end mx-1 fs-5"
-        [class]="themeMode === light? 'border-dark' : 'border-light'"
-      >
-        <input
-          class="form-check-input"
-          type="checkbox"
-          role="switch"
-          id="flexSwitchCheckChecked"
-          checked
-          (click)="themeChange()"
-        >
+      <i class="fa fs-4 pe-2" [class]="themeMode === light ? 'fa-sun text-dark' : 'fa-moon text-light'"></i>
+      <div class="form-switch pe-2 border-end mx-1 fs-5" [class]="themeMode === light? 'border-dark' : 'border-light'">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked
+          (click)="themeChange()">
       </div>
       <div class="ps-3 fs-4">
-        <i
-          class="fas fa-sign-out-alt"
-          [class]="themeMode === light ? 'text-dark' : 'text-light'"
-        ></i>
+        <span>
+          <i class="fas fa-sign-out-alt" [class]="themeMode === light ? 'text-dark' : 'text-light'"></i>
+        </span>
       </div>
     </div>
   </div>

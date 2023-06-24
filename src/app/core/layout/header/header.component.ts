@@ -2,6 +2,8 @@ import { NgIf } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MODE_TYPES } from '@app/core/constants/app.constant';
+import { ConfirmationComponent } from '@app/shared/utils/confirmation/confirmation.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HelperService } from '../../services/helper.service';
 
 @Component({
@@ -15,7 +17,9 @@ export class HeaderComponent implements OnInit {
 
   helperService = inject(HelperService);
   themeMode = MODE_TYPES.light;
-  light = MODE_TYPES.light
+  light = MODE_TYPES.light;
+
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.helperService.isDarkMode.subscribe(themeMode => this.themeMode = themeMode)
@@ -23,5 +27,9 @@ export class HeaderComponent implements OnInit {
 
   themeChange() {
     this.helperService.isDarkMode.next(this.themeMode === 'light' ? 'dark' : 'light');
+  }
+
+  open(): void {
+    this.modalService.open(ConfirmationComponent);
   }
 }
