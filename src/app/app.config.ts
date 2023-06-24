@@ -16,6 +16,10 @@ export const appConfig: ApplicationConfig = {
       BrowserAnimationsModule,
       HttpClientModule
     ),
+    { provide: 'LOCALSTORAGE', useFactory: getLocalStorage },
   ]
 };
 
+export function getLocalStorage() {
+  return typeof window !== 'undefined' ? window.localStorage : null;
+}
