@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { HelperService } from '../../services/helper.service';
+import { MODE_TYPES, VERSION } from '@app/core/constants/app.constant';
 
 @Component({
   selector: 'app-footer',
@@ -11,9 +12,12 @@ import { HelperService } from '../../services/helper.service';
 export class FooterComponent implements OnInit {
 
   helperService = inject(HelperService);
-  mode = 'light';
+  light = MODE_TYPES.light
+  themeMode = MODE_TYPES.light;
+
+  version = VERSION;
 
   ngOnInit(): void {
-    this.helperService.isDarkMode.subscribe(mode => this.mode = mode)
+    this.helperService.isDarkMode.subscribe(themeMode => this.themeMode = themeMode)
   }
 }

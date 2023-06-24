@@ -11,7 +11,7 @@ export const appRoutes: Routes = [
   {
     path: '',
     loadComponent: () => import('../../pages/pages.component').then((m) => m.PagesComponent),
-    canMatch: [AuthGuard],
+    // canMatch: [AuthGuard],
     children: [
       {
         path: '',
