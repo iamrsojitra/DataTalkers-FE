@@ -1,4 +1,4 @@
-import { NgClass, NgIf } from '@angular/common';
+import { JsonPipe, NgClass, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,7 +12,7 @@ import { ToastService } from '@services/toast-service';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, NgClass, NgIf, ButtonComponent, InputWhitespaceDirective],
+  imports: [FormsModule, NgClass, NgIf, ButtonComponent, InputWhitespaceDirective, JsonPipe],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
@@ -30,11 +30,11 @@ export class LoginComponent {
     if (form.invalid) {
       return;
     }
-    this.isSubmitted = true;
     const params = {
       ...form.value,
-      port: 3306
+      port: Number(form.value.port)
     }
+    this.isSubmitted = true;
     this.autheticationService.dbConnection(params).subscribe({
       next: (res) => {
         if (res) {

@@ -1,4 +1,4 @@
-import { JsonPipe, NgIf } from '@angular/common';
+import { JsonPipe, NgFor, NgIf } from '@angular/common';
 import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
@@ -10,7 +10,7 @@ import { HelperService } from '@services/helper.service';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgIf, JsonPipe, FormsModule],
+  imports: [NgIf, JsonPipe, FormsModule, NgFor],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   sample = sample;
   question = '';
   private destroyRef = inject(DestroyRef);
+  qaList: { question?: string, answer?: string }[] = [];
 
   constructor(
     private chatService: ChatService,
@@ -32,17 +33,33 @@ export class HomeComponent implements OnInit {
   }
 
   sendRequest(): void {
+
     this.apiLoading = true;
+    const queAns = {
+      question: this.question
+    };
+    this.qaList.push(queAns);
     const param = {
       question: this.question,
       token: `Bearer ${this.storageService.get(STORAGE.TOKEN)}`
     }
+    this.question = '';
     this.chatService.getResponse(param)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (res) => {
           if (res) {
             this.apiLoading = false;
+            // queAns = {
+            //   ...queAns,
+            //   answer: res.result
+            // };
+            // const lastItem = animals[animals. length - 1}
+            this.qaList[this.qaList.length - 1].answer = res.result;
+            // this.qaList.push(queAns);
+            console.log(this.qaList);
+
+
             console.log(res);
           }
         },

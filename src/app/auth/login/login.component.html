@@ -62,13 +62,25 @@
             </ng-container>
           </ng-container>
         </div>
+        <div class="mb-3 form-floating">
+          <input class="form-control" appWhiteSpaceInput
+            [ngClass]="{ 'is-invalid': (loginForm.submitted || port.touched) && port.invalid }" type="text" id="port"
+            ngModel name="port" #port="ngModel" required placeholder="Enter your port number">
+          <label for="port">port Name</label>
+          <ng-container *ngIf="(loginForm.submitted || port.touched)">
+            {{port.errors | json}}
+            <ng-container *ngIf="port.errors?.['required']">
+              <div class="invalid-feedback">Port is required</div>
+            </ng-container>
+            <ng-container *ngIf="port.errors?.['cannotContainSpace']">
+              <div class="invalid-feedback"> Please enter valid input </div>
+            </ng-container>
+          </ng-container>
+        </div>
         <div class="mt-3 text-center">
           <app-button [type]="'submit'" [label]="'Connect' "
             [class]="{'btn btn-outline-dark w-100': true, 'pointer-events-none': isSubmitted}"
             [isDisabled]="isSubmitted" [spin]="isSubmitted" (buttonTap)="onSubmit(loginForm)"></app-button>
-          <!-- <button class="btn btn-outline-dark w-100 " (click)="onSubmit(loginForm)" type="button">
-            Connect
-          </button> -->
         </div>
       </form>
     </div>

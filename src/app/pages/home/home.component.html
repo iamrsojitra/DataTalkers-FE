@@ -1,18 +1,21 @@
 <div class="" [attr.data-bs-theme]="themeMode">
-  <div class="card chat-container border-0 py-2">
+  <div class="card chat-container border-0 py-2" *ngFor="let qa of qaList">
     <!-- Question asked by the user -->
     <div>
-      <div class="container-fluid d-flex my-2">
+      <div class="container-fluid d-flex my-2" *ngIf="qa.question">
         <i class="fa fa-user me-3 fs-4" [class]="themeMode === light ? ' text-dark' : 'text-light'"></i>
-        <p class="card-text">Can you tell me where to find chat gpt UI</p>
+        <p class="card-text">{{qa.question}}</p>
+        <!-- <p class="card-text">Can you tell me where to find chat gpt UI</p> -->
       </div>
     </div>
 
     <!-- Answer given by the open AI-->
     <div class="bg-body-secondary">
-      <div class="container-fluid d-flex my-2">
+      <div class="container-fluid d-flex my-2" *ngIf="qa.question">
         <i class="fa fa-database me-3 fs-4" [class]="themeMode === light ? ' text-dark' : 'text-light'"></i>
-        <p class="card-text">
+        <p class="card-text">{{qa.answer}}</p>
+        <p class="card-text" *ngIf="qa.question && !qa.answer">Please wait</p>
+        <!-- <p class="card-text">
           As an AI language model, I don't have real-time information about specific websites or user interfaces.
           However, there are several platforms and applications that provide a user interface (UI) for interacting with
           chatbot or conversational AI systems like ChatGPT. Here are a few examples:
@@ -38,31 +41,31 @@
           offering a user-friendly interface. Some popular examples include ChatGPT Plus subscription, Discord bots, or
           AI-powered chat applications available on mobile app stores.
           It's important to note that the availability and speci
-        </p>
+        </p> -->
       </div>
     </div>
 
     <!-- Question asked by the user -->
-    <div>
+    <!-- <div>
       <div class="container-fluid d-flex my-2">
         <i class="fa fa-user me-3 fs-4" [class]="themeMode === light ? ' text-dark' : 'text-light'"></i>
         <p class="card-text">
           Lorem ipsum dolor sit amet consectetur adipisicing ?
         </p>
       </div>
-    </div>
+    </div> -->
 
     <!-- Answer given by the open AI-->
-    <div class="bg-body-secondary">
+    <!-- <div class="bg-body-secondary">
       <div class="container-fluid d-flex my-2">
         <i class="fa fa-database me-3 fs-4" [class]="themeMode === light ? ' text-dark' : 'text-light'"></i>
         <p class="card-text">
           <code>{{sample | json}}</code>
         </p>
-        <!-- <output>{{sample | json}}</output> -->
-        <!-- <p [innerHTML]="sample | json"></p> -->
+        <output>{{sample | json}}</output>
+        <p [innerHTML]="sample | json"></p>
       </div>
-    </div>
+    </div> -->
 
 
   </div>
