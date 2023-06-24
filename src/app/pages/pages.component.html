@@ -4,10 +4,7 @@
     <div>
       <app-header></app-header>
     </div>
-    <div
-      class="full-custom-height"
-      [class]="themeMode === light? ' bg-light' : ' bg-dark'"
-    >
+    <div class="full-custom-height" [class]="themeMode === light? ' bg-light' : ' bg-dark'">
       <router-outlet></router-outlet>
     </div>
     <div>
