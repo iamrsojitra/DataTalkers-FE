@@ -68,7 +68,6 @@
             ngModel name="port" #port="ngModel" required placeholder="Enter your port number">
           <label for="port">port Name</label>
           <ng-container *ngIf="(loginForm.submitted || port.touched)">
-            {{port.errors | json}}
             <ng-container *ngIf="port.errors?.['required']">
               <div class="invalid-feedback">Port is required</div>
             </ng-container>
