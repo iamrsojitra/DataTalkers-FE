@@ -63,8 +63,10 @@ export class HomeComponent implements OnInit {
             console.log(res);
           }
         },
-        error: () => {
-          this.apiLoading = false;
+        error: (err) => {
+          if (err) {
+            this.apiLoading = false;
+          }
         }
       })
   }
