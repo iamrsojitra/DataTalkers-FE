@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { ENCRYPT_SECRET_KEY } from '@constants/app.constant';
 import * as CryptoJS from 'crypto-js';
-import { ENCRYPT_SECRET_KEY } from '../constants/app.constant';
 
 
 @Injectable({

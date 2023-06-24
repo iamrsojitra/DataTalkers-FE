@@ -3,7 +3,7 @@ import { ApplicationConfig, importProvidersFrom } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideRouter } from "@angular/router";
-import { appRoutes } from './core/constants/app.routes';
+import { appRoutes } from '@constants/app.routes';
 
 
 

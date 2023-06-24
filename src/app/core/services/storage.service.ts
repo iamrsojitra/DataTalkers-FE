@@ -1,7 +1,7 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, InjectionToken, PLATFORM_ID } from '@angular/core';
-import { STORAGE } from '../constants/app.constant';
-import { CryptoService } from './crypto.service';
+import { STORAGE } from '@constants/app.constant';
+import { CryptoService } from '@services/crypto.service';
 
 @Injectable({
   providedIn: 'root'
