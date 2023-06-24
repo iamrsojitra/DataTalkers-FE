@@ -1,13 +1,19 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, inject } from '@angular/core';
+import { HelperService } from '../../services/helper.service';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent {
+export class FooterComponent implements OnInit {
 
+  helperService = inject(HelperService);
+  mode = 'light';
+
+  ngOnInit(): void {
+    this.helperService.isDarkMode.subscribe(mode => this.mode = mode)
+  }
 }

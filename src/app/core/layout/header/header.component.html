@@ -1,8 +1,28 @@
-<nav class="navbar bg-body-tertiary" data-bs-theme="light">
+<nav
+  class="navbar bg-body-tertiary border-bottom border-light border-dark fixed-top"
+    [attr.data-bs-theme]="mode"
+    [class]="mode === 'light'? 'border-dark' : ''"
+  >
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand header-font" [routerLink]="['/']">
       <!-- <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> -->
       Data Talkers
     </a>
+    <div class="d-flex align-items-center">
+      <i
+        class="fa me-2"
+        [class]="mode === 'light' ? 'fa-sun text-dark' : 'fa-moon text-light'"
+      ></i>
+      <div class="form-check form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          role="switch"
+          id="flexSwitchCheckChecked"
+          checked
+          (click)="themeChange()"
+        >
+      </div>
+    </div>
   </div>
 </nav>

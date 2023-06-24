@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { HelperService } from '@services/helper.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,11 @@ import { Component } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  helperService = inject(HelperService);
+  mode = 'light';
 
+  ngOnInit(): void {
+    this.helperService.isDarkMode.subscribe(mode => this.mode = mode)
+  }
 }
