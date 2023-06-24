@@ -19,10 +19,20 @@
           (click)="themeChange()">
       </div>
       <div class="ps-3 fs-4">
-        <span>
+        <span role="button" (click)="open(content)">
           <i class="fas fa-sign-out-alt" [class]="themeMode === light ? 'text-dark' : 'text-light'"></i>
         </span>
       </div>
     </div>
   </div>
 </nav>
+
+<ng-template #content let-modal>
+  <div class="modal-body">
+    <h4>Are you sure want to logout?</h4>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.close()">Cancel</button>
+    <button type="button" class="btn btn-dark" (click)="navigateToLogout(modal)">Logout</button>
+  </div>
+</ng-template>

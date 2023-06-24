@@ -47,7 +47,7 @@ export class LoginComponent {
       },
       error: (err) => {
         if (err) {
-          this.toasterService.show("There is some error while connect to Database", { classname: 'bg-danger text-light', delay: 1000 })
+          this.toasterService.show(err.message || "There is some error while connect to Database", { classname: 'bg-danger text-light', delay: 1000 })
           this.isSubmitted = false;
         }
       }
