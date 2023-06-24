@@ -11,6 +11,6 @@ export const LoginGuard: CanMatchFn = () => {
   if (!token) {
     return true;
   }
-  router.navigate(['/admin']);
+  router.navigate(['/']);
   return false;
 };
