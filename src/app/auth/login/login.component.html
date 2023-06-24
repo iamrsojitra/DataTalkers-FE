@@ -6,42 +6,64 @@
     <div class="p-4 rounded-4 mt-7">
       <form #loginForm="ngForm">
         <div class="form-floating mb-3">
-          <input class="form-control"
+          <input class="form-control" appWhiteSpaceInput
             [ngClass]="{ 'is-invalid': (loginForm.submitted || username.touched) && username.invalid }" type="text"
             id="username" name="username" ngModel #username="ngModel" required placeholder="Enter you Username">
           <label for="username">Username</label>
-          <ng-container *ngIf="(loginForm.submitted || username.touched) && username.errors?.['required']">
-            <div class="invalid-feedback"> Username is required </div>
+          <ng-container *ngIf="(loginForm.submitted || username.touched)">
+            <ng-container *ngIf="username.errors?.['required']">
+              <div class="invalid-feedback"> Username is required </div>
+            </ng-container>
+            <ng-container *ngIf="username.errors?.['cannotContainSpace']">
+              <div class="invalid-feedback"> Please enter valid input </div>
+            </ng-container>
           </ng-container>
+          <ng-container *ngTemplateOutlet="whiteSpaceError; context: { control: username }"></ng-container>
         </div>
         <div class="mb-3 form-floating">
-          <input class="form-control" id="password" type="password"
+          <input class="form-control" appWhiteSpaceInput id="password" type="text"
             [ngClass]="{ 'is-invalid': (loginForm.submitted || password.touched) && password.invalid }" ngModel
             #password="ngModel" name="password" required placeholder="Enter your Password">
           <label for="password">Password</label>
-          <ng-container *ngIf="(loginForm.submitted || password.touched) && password.errors?.['required']">
-            <div class="invalid-feedback">Password is required</div>
+          <ng-container *ngIf="(loginForm.submitted || password.touched)">
+            <ng-container *ngIf="password.errors?.['required']">
+              <div class="invalid-feedback">Password is required</div>
+            </ng-container>
+            <ng-container *ngIf="password.errors?.['cannotContainSpace']">
+              <div class="invalid-feedback"> Please enter valid input </div>
+            </ng-container>
           </ng-container>
         </div>
         <div class="mb-3 form-floating">
-          <input class="form-control"
+          <input class="form-control" appWhiteSpaceInput
             [ngClass]="{ 'is-invalid': (loginForm.submitted || dbHostUrl.touched) && dbHostUrl.invalid }" type="text"
             id="dbHostUrl" ngModel name="dbHostUrl" #dbHostUrl="ngModel" required placeholder="Enter your DB Host URL">
           <label for="dbHostUrl">DBHostUrl</label>
-          <ng-container *ngIf="(loginForm.submitted || dbHostUrl.touched) && dbHostUrl.errors?.['required']">
-            <div class="invalid-feedback">DbHostUrl is required</div>
+          <div class="form-text ms-2" id="basic-addon4">Example help text goes outside the input group.</div>
+          <ng-container *ngIf="(loginForm.submitted || dbHostUrl.touched)">
+            <ng-container *ngIf="dbHostUrl.errors?.['required']">
+              <div class="invalid-feedback">DbHostUrl is required</div>
+            </ng-container>
+            <ng-container *ngIf="dbHostUrl.errors?.['cannotContainSpace']">
+              <div class="invalid-feedback"> Please enter valid input </div>
+            </ng-container>
           </ng-container>
         </div>
         <div class="mb-3 form-floating">
-          <input class="form-control"
+          <input class="form-control" appWhiteSpaceInput
             [ngClass]="{ 'is-invalid': (loginForm.submitted || dbName.touched) && dbName.invalid }" type="text"
             id="dbName" ngModel name="dbName" #dbName="ngModel" required placeholder="Enter your DB Name">
           <label for="dbName">DBName</label>
-          <ng-container *ngIf="(loginForm.submitted || dbName.touched) && dbName.errors?.['required']">
-            <div class="invalid-feedback">DB Name is required</div>
+          <ng-container *ngIf="(loginForm.submitted || dbName.touched)">
+            <ng-container *ngIf="dbName.errors?.['required']">
+              <div class="invalid-feedback">DB Name is required</div>
+            </ng-container>
+            <ng-container *ngIf="dbName.errors?.['cannotContainSpace']">
+              <div class="invalid-feedback"> Please enter valid input </div>
+            </ng-container>
           </ng-container>
         </div>
-        <div class="mt-3 text-center ">
+        <div class="mt-3 text-center">
           <app-button [type]="'submit'" [label]="'Connect' "
             [class]="{'btn btn-outline-dark w-100': true, 'pointer-events-none': isSubmitted}"
             [isDisabled]="isSubmitted" [spin]="isSubmitted" (buttonTap)="onSubmit(loginForm)"></app-button>

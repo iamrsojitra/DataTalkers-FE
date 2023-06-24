@@ -42,6 +42,9 @@
       "@constants/*": [
         "app/core/constants/*"
       ],
+      "@directives/*": [
+        "app/core/directives/*"
+      ],
       "@guards/*": [
         "app/core/guards/*"
       ],
