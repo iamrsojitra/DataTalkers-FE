@@ -49,7 +49,7 @@
         "app/core/services/*"
       ],
       "@layouts/*": [
-        "app/core/layouts/*"
+        "app/core/layout/*"
       ],
       "@utils/*": [
         "app/shared/utils/*"

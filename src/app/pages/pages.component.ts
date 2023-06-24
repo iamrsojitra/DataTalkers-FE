@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { FooterComponent } from '../core/layout/footer/footer.component';
-import { HeaderComponent } from '../core/layout/header/header.component';
-import { SidebarComponent } from '../core/layout/sidebar/sidebar.component';
+import { FooterComponent } from '@layouts/footer/footer.component';
+import { HeaderComponent } from '@layouts/header/header.component';
+import { SidebarComponent } from '@layouts/sidebar/sidebar.component';
+import { HelperService } from '@services/helper.service';
 
 @Component({
   selector: 'app-pages',
@@ -12,6 +13,11 @@ import { SidebarComponent } from '../core/layout/sidebar/sidebar.component';
   templateUrl: './pages.component.html',
   styleUrls: ['./pages.component.scss']
 })
-export class PagesComponent {
+export class PagesComponent implements OnInit {
+  helperService = inject(HelperService);
+  mode = 'light';
 
+  ngOnInit(): void {
+    this.helperService.isDarkMode.subscribe(mode => this.mode = mode)
+  }
 }

@@ -1,10 +1,15 @@
-<div>
+<div class="flex top-spacing">
   <app-sidebar></app-sidebar>
   <div>
     <div>
       <app-header></app-header>
     </div>
-    <router-outlet></router-outlet>
+    <div
+      class="full-custom-height"
+      [class]="mode === 'light'? ' bg-light' : ' bg-dark'"
+    >
+      <router-outlet></router-outlet>
+    </div>
     <div>
       <app-footer></app-footer>
     </div>

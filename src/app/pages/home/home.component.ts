@@ -1,15 +1,14 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { HelperService } from '../../services/helper.service';
+import { HelperService } from '@services/helper.service';
 
 @Component({
-  selector: 'app-footer',
+  selector: 'app-home',
   standalone: true,
   imports: [],
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class FooterComponent implements OnInit {
-
+export class HomeComponent implements OnInit {
   helperService = inject(HelperService);
   mode = 'light';
 
