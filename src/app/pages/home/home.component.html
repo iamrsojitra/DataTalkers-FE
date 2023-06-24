@@ -1,5 +1,5 @@
 <div class="" [attr.data-bs-theme]="themeMode">
-  <div class="card chat-container border-0 py-2" *ngFor="let qa of qaList">
+  <div class="card chat-container border-0" *ngFor="let qa of qaList">
     <!-- Question asked by the user -->
     <div>
       <div class="container-fluid d-flex my-2" *ngIf="qa.question">
@@ -13,8 +13,10 @@
     <div class="bg-body-secondary">
       <div class="container-fluid d-flex my-2" *ngIf="qa.question">
         <i class="fa fa-database me-3 fs-4" [class]="themeMode === light ? ' text-dark' : 'text-light'"></i>
-        <p class="card-text">{{qa.answer}}</p>
-        <div class="spinner d-flex align-items-center justify-content-center" *ngIf="qa.question && !qa.answer">
+        <p class="card-text mb-0" [innerHTML]="qa?.answer | nl2br"></p>
+        <p class="card-text text-danger mb-0" [innerHTML]="qa?.error | nl2br"></p>
+        <div class="spinner d-flex align-items-center justify-content-center"
+          *ngIf="apiLoading && !qa.answer && !qa.error">
           <div class="bounce1"></div>
           <div class="bounce2"></div>
           <div class="bounce3"></div>
@@ -26,7 +28,8 @@
     [class]="themeMode === light ? 'input-light-bg' : 'input-dark-bg'">
     <div class="container-fluid">
       <div class="input-group">
-        <input type="textarea" class="form-control" placeholder="Send a message" [(ngModel)]="question">
+        <input type="textarea" class="form-control" placeholder="Send a message" [(ngModel)]="question"
+          (keyup.enter)="question && !apiLoading && sendRequest()">
         <div class="input-group-text" (click)="question && !apiLoading && sendRequest()">
           <ng-container *ngIf="!apiLoading">
             <i class="fa fa-location-arrow fa-sm me-1 custom-font-rotate custom-font-size"

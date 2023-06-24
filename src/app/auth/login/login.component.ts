@@ -52,7 +52,5 @@ export class LoginComponent {
         }
       }
     })
-    console.log(form.value);
-
   }
 }

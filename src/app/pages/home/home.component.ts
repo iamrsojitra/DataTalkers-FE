@@ -3,6 +3,7 @@ import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { MODE_TYPES, STORAGE } from '@app/core/constants/app.constant';
+import { Nl2brPipe } from '@app/core/pipes/nl2br.pipe';
 import { ChatService } from '@app/core/services/chat.service';
 import { StorageService } from '@app/core/services/storage.service';
 import { HelperService } from '@services/helper.service';
@@ -10,7 +11,7 @@ import { HelperService } from '@services/helper.service';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgIf, JsonPipe, FormsModule, NgFor],
+  imports: [NgIf, JsonPipe, FormsModule, NgFor, Nl2brPipe],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
@@ -22,7 +23,7 @@ export class HomeComponent implements OnInit {
   sample = sample;
   question = '';
   private destroyRef = inject(DestroyRef);
-  qaList: { question?: string, answer?: string }[] = [];
+  qaList: { question?: string, answer?: string, error?: string }[] = [];
 
   constructor(
     private chatService: ChatService,
@@ -50,23 +51,12 @@ export class HomeComponent implements OnInit {
         next: (res) => {
           if (res) {
             this.apiLoading = false;
-            // queAns = {
-            //   ...queAns,
-            //   answer: res.result
-            // };
-            // const lastItem = animals[animals. length - 1}
             this.qaList[this.qaList.length - 1].answer = res.result;
-            // this.qaList.push(queAns);
-            console.log(this.qaList);
-
-
-            console.log(res);
           }
         },
         error: (err) => {
-          if (err) {
-            this.apiLoading = false;
-          }
+          this.apiLoading = false;
+          this.qaList[this.qaList.length - 1].error = err.message;
         }
       })
   }
