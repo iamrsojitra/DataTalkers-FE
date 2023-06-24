@@ -2,13 +2,22 @@
   max-width: 900px;
 }
 
-.chat-container {
-  .custom-font-rotate {
-    transform: rotate(45deg);
-    font-size: 20px !important;
-  }
+.custom-font-rotate {
+  transform: rotate(45deg);
+}
+
+.custom-font-size {
+  font-size: 20px;
 }
 
 .input-custom {
-  bottom: 35px;
+  bottom: 28px;
+}
+
+.input-dark-bg {
+  background-image: linear-gradient(to top, rgb(43, 48, 53), rgba(43, 48, 53, 0));
+}
+
+.input-light-bg {
+  background-image: linear-gradient(to top, rgb(255, 255, 255), rgba(255, 255, 255, 0));
 }

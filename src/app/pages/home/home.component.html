@@ -1,11 +1,11 @@
-<div class="" [attr.data-bs-theme]="mode">
+<div class="" [attr.data-bs-theme]="themeMode">
   <div class="card chat-container border-0 py-2">
     <!-- Question asked by the user -->
     <div>
       <div class="container-fluid d-flex my-2">
         <i
           class="fa fa-user me-3 fs-4"
-          [class]="mode === 'light' ? ' text-dark' : 'text-light'"
+          [class]="themeMode === light ? ' text-dark' : 'text-light'"
         ></i>
         <p class="card-text">Can you tell me where to find chat gpt UI</p>
       </div>
@@ -16,7 +16,7 @@
       <div class="container-fluid d-flex my-2">
         <i
           class="fa fa-database me-3 fs-4"
-          [class]="mode === 'light' ? ' text-dark' : 'text-light'"
+          [class]="themeMode === light ? ' text-dark' : 'text-light'"
         ></i>
         <p class="card-text">
           As an AI language model, I don't have real-time information about specific websites or user interfaces. However, there are several platforms and applications that provide a user interface (UI) for interacting with chatbot or conversational AI systems like ChatGPT. Here are a few examples:
@@ -38,7 +38,7 @@
       <div class="container-fluid d-flex my-2">
         <i
           class="fa fa-user me-3 fs-4"
-          [class]="mode === 'light' ? ' text-dark' : 'text-light'"
+          [class]="themeMode === light ? ' text-dark' : 'text-light'"
         ></i>
         <p class="card-text">
           Lorem ipsum dolor sit amet consectetur adipisicing ?
@@ -51,28 +51,46 @@
       <div class="container-fluid d-flex my-2">
         <i
           class="fa fa-database me-3 fs-4"
-          [class]="mode === 'light' ? ' text-dark' : 'text-light'"
+          [class]="themeMode === light ? ' text-dark' : 'text-light'"
         ></i>
         <p class="card-text">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde consequatur eligendi eius laborum exercitationem
+          <code>{{sample | json}}</code>
         </p>
+        <!-- <output>{{sample | json}}</output> -->
+        <!-- <p [innerHTML]="sample | json"></p> -->
       </div>
     </div>
 
 
   </div>
-  <div class="container-fluid position-absolute input-custom">
-    <div class="input-group">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Send a message">
-      <span class="input-group-text">
-        <i
-          class="fa fa-location-arrow fa-sm me-1 fs-4 custom-font-rotate"
-          [class]="mode === 'light' ? ' text-dark' : 'text-light'"
-        ></i>
-      </span>
+  <div
+    class="position-fixed input-custom w-100 py-2 pt-5"
+    [class]="themeMode === light ? 'input-light-bg' : 'input-dark-bg'"
+  >
+    <div class="container-fluid">
+      <div class="input-group">
+        <input
+          type="textarea"
+          class="form-control"
+          placeholder="Send a message"
+        >
+        <div class="input-group-text"
+          (click)="!apiLoading && sendRequest()"
+        >
+          <ng-container *ngIf="!apiLoading">
+            <i
+              class="fa fa-location-arrow fa-sm me-1 custom-font-rotate custom-font-size"
+              [class]="themeMode === light ? 'text-dark' : 'text-light'"
+            ></i>
+          </ng-container>
+          <ng-container *ngIf="apiLoading">
+            <i
+              class="fa fa-circle-notch fa-spin fa-sm me-1 custom-font-size"
+              [class]="themeMode === light ? 'text-dark' : 'text-light'"
+            ></i>
+          </ng-container>
+        </div>
+      </div>
     </div>
   </div>
 </div>

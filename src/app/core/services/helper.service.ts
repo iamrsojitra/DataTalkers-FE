@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class HelperService {
 
-  isDarkMode = new BehaviorSubject('dark');
+  isDarkMode = new BehaviorSubject('light');
 
   constructor(
   ) { }

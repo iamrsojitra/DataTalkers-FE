@@ -1,7 +1,8 @@
 import { NgIf } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
-import { HelperService } from '../../services/helper.service';
 import { RouterLink } from '@angular/router';
+import { MODE_TYPES } from '@app/core/constants/app.constant';
+import { HelperService } from '../../services/helper.service';
 
 @Component({
   selector: 'app-header',
@@ -13,13 +14,14 @@ import { RouterLink } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   helperService = inject(HelperService);
-  mode = 'light';
+  themeMode = MODE_TYPES.light;
+  light = MODE_TYPES.light
 
   ngOnInit(): void {
-    this.helperService.isDarkMode.subscribe(mode => this.mode = mode)
+    this.helperService.isDarkMode.subscribe(themeMode => this.themeMode = themeMode)
   }
 
   themeChange() {
-    this.helperService.isDarkMode.next(this.mode === 'light' ? 'dark' : 'light');
+    this.helperService.isDarkMode.next(this.themeMode === 'light' ? 'dark' : 'light');
   }
 }
