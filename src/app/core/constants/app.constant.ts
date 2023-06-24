@@ -7,7 +7,8 @@ export const STORAGE = {
 };
 
 export const API_ROUTES = {
-  dbConnectionApi: ''
+  dbConnectionApi: 'https://3c03-103-155-206-50.ngrok-free.app/database',
+  chatApi: 'https://3c03-103-155-206-50.ngrok-free.app/ai'
 }
 
 export const ENCRYPT_SECRET_KEY = 'bfdsjhfgdjhfdsfjh'

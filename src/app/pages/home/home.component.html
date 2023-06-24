@@ -3,10 +3,7 @@
     <!-- Question asked by the user -->
     <div>
       <div class="container-fluid d-flex my-2">
-        <i
-          class="fa fa-user me-3 fs-4"
-          [class]="themeMode === light ? ' text-dark' : 'text-light'"
-        ></i>
+        <i class="fa fa-user me-3 fs-4" [class]="themeMode === light ? ' text-dark' : 'text-light'"></i>
         <p class="card-text">Can you tell me where to find chat gpt UI</p>
       </div>
     </div>
@@ -14,20 +11,32 @@
     <!-- Answer given by the open AI-->
     <div class="bg-body-secondary">
       <div class="container-fluid d-flex my-2">
-        <i
-          class="fa fa-database me-3 fs-4"
-          [class]="themeMode === light ? ' text-dark' : 'text-light'"
-        ></i>
+        <i class="fa fa-database me-3 fs-4" [class]="themeMode === light ? ' text-dark' : 'text-light'"></i>
         <p class="card-text">
-          As an AI language model, I don't have real-time information about specific websites or user interfaces. However, there are several platforms and applications that provide a user interface (UI) for interacting with chatbot or conversational AI systems like ChatGPT. Here are a few examples:
-          OpenAI ChatGPT Playground: OpenAI provides an official web-based interface called the "ChatGPT Playground" where you can have interactive conversations with ChatGPT. You can access it by visiting OpenAI's website and navigating to the ChatGPT section.
-          Third-Party Platforms: Various third-party platforms and applications integrate ChatGPT or similar AI models, offering a user-friendly interface. Some popular examples include ChatGPT Plus subscription, Discord bots, or AI-powered chat applications available on mobile app stores.
-          It's important to note that the availability and specific interfaces may vary depending on the platform and any recent updates made by OpenAI or third-party developers. I recommend searching for "ChatGPT UI" or checking with the specific platform or application you're interested in to find the most up-to-date information and access the appropriate user interface.
-          ial web-based interface called the "ChatGPT Playground" where you can have interactive conversations with ChatGPT. You can access it by visiting OpenAI's website and navigating to the ChatGPT section.
-          Third-Party Platforms: Various third-party platforms and applications integrate ChatGPT or similar AI models, offering a user-friendly interface. Some popular examples include ChatGPT Plus subscription, Discord bots, or AI-powered chat applications available on mobile app stores.
+          As an AI language model, I don't have real-time information about specific websites or user interfaces.
+          However, there are several platforms and applications that provide a user interface (UI) for interacting with
+          chatbot or conversational AI systems like ChatGPT. Here are a few examples:
+          OpenAI ChatGPT Playground: OpenAI provides an official web-based interface called the "ChatGPT Playground"
+          where you can have interactive conversations with ChatGPT. You can access it by visiting OpenAI's website and
+          navigating to the ChatGPT section.
+          Third-Party Platforms: Various third-party platforms and applications integrate ChatGPT or similar AI models,
+          offering a user-friendly interface. Some popular examples include ChatGPT Plus subscription, Discord bots, or
+          AI-powered chat applications available on mobile app stores.
+          It's important to note that the availability and specific interfaces may vary depending on the platform and
+          any recent updates made by OpenAI or third-party developers. I recommend searching for "ChatGPT UI" or
+          checking with the specific platform or application you're interested in to find the most up-to-date
+          information and access the appropriate user interface.
+          ial web-based interface called the "ChatGPT Playground" where you can have interactive conversations with
+          ChatGPT. You can access it by visiting OpenAI's website and navigating to the ChatGPT section.
+          Third-Party Platforms: Various third-party platforms and applications integrate ChatGPT or similar AI models,
+          offering a user-friendly interface. Some popular examples include ChatGPT Plus subscription, Discord bots, or
+          AI-powered chat applications available on mobile app stores.
           It's important to note that the availability and speci
-          ial web-based interface called the "ChatGPT Playground" where you can have interactive conversations with ChatGPT. You can access it by visiting OpenAI's website and navigating to the ChatGPT section.
-          Third-Party Platforms: Various third-party platforms and applications integrate ChatGPT or similar AI models, offering a user-friendly interface. Some popular examples include ChatGPT Plus subscription, Discord bots, or AI-powered chat applications available on mobile app stores.
+          ial web-based interface called the "ChatGPT Playground" where you can have interactive conversations with
+          ChatGPT. You can access it by visiting OpenAI's website and navigating to the ChatGPT section.
+          Third-Party Platforms: Various third-party platforms and applications integrate ChatGPT or similar AI models,
+          offering a user-friendly interface. Some popular examples include ChatGPT Plus subscription, Discord bots, or
+          AI-powered chat applications available on mobile app stores.
           It's important to note that the availability and speci
         </p>
       </div>
@@ -36,10 +45,7 @@
     <!-- Question asked by the user -->
     <div>
       <div class="container-fluid d-flex my-2">
-        <i
-          class="fa fa-user me-3 fs-4"
-          [class]="themeMode === light ? ' text-dark' : 'text-light'"
-        ></i>
+        <i class="fa fa-user me-3 fs-4" [class]="themeMode === light ? ' text-dark' : 'text-light'"></i>
         <p class="card-text">
           Lorem ipsum dolor sit amet consectetur adipisicing ?
         </p>
@@ -49,10 +55,7 @@
     <!-- Answer given by the open AI-->
     <div class="bg-body-secondary">
       <div class="container-fluid d-flex my-2">
-        <i
-          class="fa fa-database me-3 fs-4"
-          [class]="themeMode === light ? ' text-dark' : 'text-light'"
-        ></i>
+        <i class="fa fa-database me-3 fs-4" [class]="themeMode === light ? ' text-dark' : 'text-light'"></i>
         <p class="card-text">
           <code>{{sample | json}}</code>
         </p>
@@ -63,31 +66,19 @@
 
 
   </div>
-  <div
-    class="position-fixed input-custom w-100 py-2 pt-5"
-    [class]="themeMode === light ? 'input-light-bg' : 'input-dark-bg'"
-  >
+  <div class="position-fixed input-custom w-100 py-2 pt-5"
+    [class]="themeMode === light ? 'input-light-bg' : 'input-dark-bg'">
     <div class="container-fluid">
       <div class="input-group">
-        <input
-          type="textarea"
-          class="form-control"
-          placeholder="Send a message"
-        >
-        <div class="input-group-text"
-          (click)="!apiLoading && sendRequest()"
-        >
+        <input type="textarea" class="form-control" placeholder="Send a message" [(ngModel)]="question">
+        <div class="input-group-text" (click)="question && !apiLoading && sendRequest()">
           <ng-container *ngIf="!apiLoading">
-            <i
-              class="fa fa-location-arrow fa-sm me-1 custom-font-rotate custom-font-size"
-              [class]="themeMode === light ? 'text-dark' : 'text-light'"
-            ></i>
+            <i class="fa fa-location-arrow fa-sm me-1 custom-font-rotate custom-font-size"
+              [class]="themeMode === light ? 'text-dark' : 'text-light'"></i>
           </ng-container>
           <ng-container *ngIf="apiLoading">
-            <i
-              class="fa fa-circle-notch fa-spin fa-sm me-1 custom-font-size"
-              [class]="themeMode === light ? 'text-dark' : 'text-light'"
-            ></i>
+            <i class="fa fa-circle-notch fa-spin fa-sm me-1 custom-font-size"
+              [class]="themeMode === light ? 'text-dark' : 'text-light'"></i>
           </ng-container>
         </div>
       </div>
