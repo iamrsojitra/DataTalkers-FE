@@ -1,3 +1,5 @@
+export const VERSION = '0.0.1';
+
 export const STORAGE = {
   TOKEN: 'token',
   CURRENT_USER: 'currentUser',
@@ -23,3 +25,9 @@ export enum MessageType {
   info = 'info',
   warning = 'warning',
 }
+
+export const MODE_TYPES = {
+  light: 'light',
+  dark: 'dark'
+}
+

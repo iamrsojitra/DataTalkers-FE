@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { FooterComponent } from '../core/layout/footer/footer.component';
-import { HeaderComponent } from '../core/layout/header/header.component';
-import { SidebarComponent } from '../core/layout/sidebar/sidebar.component';
-import { HelperService } from '../core/services/helper.service';
+import { MODE_TYPES } from '@app/core/constants/app.constant';
+import { FooterComponent } from '@layouts/footer/footer.component';
+import { HeaderComponent } from '@layouts/header/header.component';
+import { SidebarComponent } from '@layouts/sidebar/sidebar.component';
+import { HelperService } from '@services/helper.service';
 
 @Component({
   selector: 'app-pages',
@@ -15,9 +16,10 @@ import { HelperService } from '../core/services/helper.service';
 })
 export class PagesComponent implements OnInit {
   helperService = inject(HelperService);
-  mode = 'light';
+  light = MODE_TYPES.light
+  themeMode = MODE_TYPES.light;
 
   ngOnInit(): void {
-    this.helperService.isDarkMode.subscribe(mode => this.mode = mode)
+    this.helperService.isDarkMode.subscribe(themeMode => this.themeMode = themeMode)
   }
 }
