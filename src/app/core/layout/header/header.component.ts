@@ -1,10 +1,9 @@
 import { NgIf } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { MODE_TYPES } from '@app/core/constants/app.constant';
-import { ConfirmationComponent } from '@app/shared/utils/confirmation/confirmation.component';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { HelperService } from '../../services/helper.service';
+import { Router, RouterLink } from '@angular/router';
+import { MODE_TYPES } from '@constants/app.constant';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { HelperService } from '@services/helper.service';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +18,11 @@ export class HeaderComponent implements OnInit {
   themeMode = MODE_TYPES.light;
   light = MODE_TYPES.light;
 
-  constructor(private modalService: NgbModal) { }
+  constructor(
+    private modalService: NgbModal,
+    private config: NgbModalConfig,
+    private router: Router
+  ) { config.backdrop = 'static' }
 
   ngOnInit(): void {
     this.helperService.isDarkMode.subscribe(themeMode => this.themeMode = themeMode)
@@ -29,7 +32,13 @@ export class HeaderComponent implements OnInit {
     this.helperService.isDarkMode.next(this.themeMode === 'light' ? 'dark' : 'light');
   }
 
-  open(): void {
-    this.modalService.open(ConfirmationComponent);
+  open(content: any): void {
+    this.modalService.open(content, { centered: true });
   }
+
+  navigateToLogout(modal: any): void {
+    modal.close();
+    this.router.navigate(['auth/logout']);
+  }
+
 }

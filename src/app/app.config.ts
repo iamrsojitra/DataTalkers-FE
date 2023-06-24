@@ -6,6 +6,7 @@ import { provideRouter } from "@angular/router";
 import { appRoutes } from '@constants/app.routes';
 import { ErrorInterceptor } from '@interceptors/error.interceptor';
 import { HttpTokenInterceptor } from '@interceptors/http.interceptor';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,7 +15,8 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(
       BrowserModule,
       BrowserAnimationsModule,
-      HttpClientModule
+      HttpClientModule,
+      NgbModule
     ),
     { provide: 'LOCALSTORAGE', useFactory: getLocalStorage },
   ]
