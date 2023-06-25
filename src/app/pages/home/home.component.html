@@ -17,8 +17,8 @@
         <p class="card-text mb-0" [innerHTML]="qa?.answer | nl2br"></p>
         <div class="d-flex justify-content-between" *ngIf="qa.query">
           <p>SQL Query: <code>{{qa.query}}</code></p>
-          <i class="fa fa-copy me-3 fs-4" [class]="themeMode === light ? ' text-dark' : 'text-light'"
-            (click)="copyToClipboard(qa.query)"></i>
+          <!-- <i class="fa fa-copy me-3 fs-4" [class]="themeMode === light ? ' text-dark' : 'text-light'"
+            (click)="copyToClipboard(qa.query)"></i> -->
         </div>
         <p class="card-text text-danger mb-0" [innerHTML]="qa?.error | nl2br"></p>
         <div class="spinner d-flex pt-2"
